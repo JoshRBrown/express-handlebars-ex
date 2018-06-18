@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
     // res.send('Welcome to the machine');
     res.render('home', {
         message: 'Hello Handlebars',
-        ptext: 'Welcome to the world of the plastic beach.'
+        ptext: 'Welcome to the world of the plastic beach.',
+        layout: 'homepage'
     })
 });
 
