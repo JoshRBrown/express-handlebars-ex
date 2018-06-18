@@ -33,14 +33,18 @@ app.get('/contacts/:id', (req, res) => {
         return user.id === userID;
     })
     // check if contact exists
-    res.render('person', {
-        contact
-        // fname: contact.firstName,
-        // lname: contact.lastName,
-        // phone: contact.phone,
-        // email: contact.email
-    })
-            
+    if (!contact){
+        res.redirect('/');
+    } else {
+       res.render('person', {
+           contact
+           // fname: contact.firstName,
+           // lname: contact.lastName,
+           // phone: contact.phone,
+           // email: contact.email
+       })
+    }
+        
 })
 
 
