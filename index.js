@@ -21,7 +21,10 @@ app.get('/', (req, res) => {
 
 // Contact list page. Show the user all contacts
 app.get('/contacts', (req, res) => {
-    res.send(contacts.users)
+    // res.send(contacts.users)
+    res.render('people', {
+    list: contacts.users        
+    })
 })
 // Contact detailed page. Show the user all info for one cantact.
 app.get('/contacts/:id', (req, res) => {
@@ -30,8 +33,16 @@ app.get('/contacts/:id', (req, res) => {
         return user.id === userID;
     })
     // check if contact exists
-    res.send(contact);
+    res.render('person', {
+        contact
+        // fname: contact.firstName,
+        // lname: contact.lastName,
+        // phone: contact.phone,
+        // email: contact.email
+    })
+            
 })
+
 
 
 app.listen(5000, () => {

@@ -1,1 +1,8 @@
-<h3>{{person}}</h3>
+<h3>Here are your contacts</h3>
+<ul>
+{{#each list}}
+<li><a href="/contacts/{{id}}">
+{{firstName}}  {{lastName}}</li>
+</a>
+{{/each}}
+</ul>
