@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const contacts = require('./contacts');
-
+const static = express.static;
 const expressHbs = require('express-handlebars');
 
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
-
+// tell express to look in this directory whenever a file is referenced
+app.use(static('public'));
 
 // Show the user a welcome message
 app.get('/', (req, res) => {
