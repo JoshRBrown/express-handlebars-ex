@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const contacts = require('./contacts');
 
 
 
@@ -12,11 +13,16 @@ app.get('/', (req, res) => {
 
 // Contact list page. Show the user all contacts
 app.get('/contacts', (req, res) => {
-    res.send('You are on the listing page.')
+    res.send(contacts.users)
 })
 // Contact detailed page. Show the user all info for one cantact.
 app.get('/contacts/:id', (req, res) => {
-    res.send(`You are viewing details for ${req.params.id}`);
+    let userID = req.params.id
+    let contact = contacts.users.find((user) => {
+        return user.id === userID;
+    })
+    // check if contact exists
+    res.send(contact);
 })
 
 
